@@ -1,0 +1,43 @@
+﻿<Window x:Class="Kursowa.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursowa"
+		PreviewKeyDown="Window_PreviewKeyDown"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition Width="259*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <TextBox Name ="Output" TextWrapping="Wrap" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Auto" Margin="238,28,91,248" Grid.Column="1"/>
+        <Button Margin="576,306,91,72" Content="Recalculate" Click="Button_Click" Grid.Column="1"  />
+
+        <Menu Margin="12,10,598,339" Background="White" BorderThickness="0" Grid.ColumnSpan="2">
+            <MenuItem Header="Menu of Actions"  Height="28" Width="106" BorderThickness="1" BorderBrush="Gray">
+
+                <MenuItem Header="Add" Background="White" Click="Add_click">
+
+                </MenuItem>
+                <MenuItem Header="Edit" Background="White" Click="Edit_click">
+
+                </MenuItem>
+                <MenuItem Header="Delete" Background="White" Click=" Delete_click">
+
+                </MenuItem>
+                <MenuItem Header="Sorting" Background="White" Click="Sorting_click">
+
+                </MenuItem>
+                <MenuItem Header="Import into new file" Background="White" Click="Input_click">
+
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" BorderThickness="1" BorderBrush="Gray" Click="MenuItem_Click"></MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>

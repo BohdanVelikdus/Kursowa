@@ -1,0 +1,92 @@
+﻿<Window x:Class="Kursowa.Delete"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursowa"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Delete" Height="450" Width="800">
+    <Grid>
+        <Menu Margin="12,10,580,355" Background="White" BorderThickness="0">
+            <MenuItem Header="Menu of Actions"  Height="28" Width="106" BorderThickness="1" BorderBrush="Gray">
+
+                <MenuItem Header="Add" Background="White" Click="Add_click">
+
+                </MenuItem>
+                <MenuItem Header="Edit" Background="White" Click="Edit_click">
+
+                </MenuItem>
+                <MenuItem Header="Delete" Background="White" Click=" Delete_click">
+
+                </MenuItem>
+                <MenuItem Header="Sorting" Background="White" Click="Sorting_click">
+
+                </MenuItem>
+                <MenuItem Header="Import into new file" Background="White" Click="Input_click">
+
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Help" BorderThickness="1" BorderBrush="Gray" Click="MenuItem_Click"></MenuItem>
+        </Menu>
+        <ListView Name="myListView" Margin="267,10,10,188" SelectionChanged="ListView_SelectionChanged" SelectionMode="Single" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Value.Name}" Header="Name towaru" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Value.Numer}" Header="Serijnyj nomer" Width="150"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Value.Country}" Header="Country" Width="100"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Value.Kilkist}" Header="Kilkist towaru" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox x:Name="name" Margin="11,199,631,201" ></TextBox>
+        <TextBox x:Name="serijnyj" Margin="10,238,631,170" ></TextBox>
+        <TextBox x:Name="searchTextBox" Width="158" Margin="11,295,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+     TextChanged="SearchTextBox_TextChanged" Height="19"/>
+        <ComboBox x:Name="myComboBox" Width="158" Margin="11,269,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"
+      IsEditable="True" IsTextSearchEnabled="False" Height="21" />
+        <Button Content="Apply filters" Margin="0,398,621,10" Click="Button_Click_1" ></Button>
+        <Button Content = "Змiнити" Margin="541,321,22,23" Click="Button_Click" RenderTransformOrigin="0.5,0.5" >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <xctk:RangeSlider x:Name="myRangeSlider" Minimum="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,371,0,0" Width="131" IsSnapToTickEnabled="True" TickFrequency="1" >
+            <!--LowerValue="{Binding ElementName=myLowerTextBox, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  HigherValue="{Binding ElementName=myUpperTextBox, Path=Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"-->
+            <xctk:RangeSlider.Maximum>
+                <Binding Path="maxKilkist"/>
+            </xctk:RangeSlider.Maximum>
+            <xctk:RangeSlider.HigherValue>
+                <Binding Path="maxKilkist"/>
+            </xctk:RangeSlider.HigherValue>
+        </xctk:RangeSlider>
+
+        <ComboBox x:Name="Uporyadkuvaty" Margin="189,356,417,45" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.174"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+            <ComboBoxItem  Name ="nameUp"  Content="Name Ascending"/>
+            <ComboBoxItem  Name ="nameDown" Content="Name Descending"/>
+            <ComboBoxItem  Name ="kilkistUp" Content="kilkist Ascending"/>
+            <ComboBoxItem  Name ="kilkistDown" Content="Name Descending"/>
+            <ComboBoxItem  Name ="countryUp" Content="Country Ascending"/>
+            <ComboBoxItem  Name ="countryDown" Content="Name Descending"/>
+        </ComboBox>
+        <TextBox x:Name="myLowerTextBox" Text="{Binding ElementName=myRangeSlider, Path=LowerValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+         HorizontalAlignment="Left" VerticalAlignment="Top" Height="34" Width="54" Margin="11,327,0,0" />
+
+        <TextBox x:Name="myUpperTextBox" Text="{Binding ElementName=myRangeSlider, Path=HigherValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+         HorizontalAlignment="Left" VerticalAlignment="Top" Height="39" Margin="87,327,0,0" Width="54"  />
+    </Grid>
+</Window>
